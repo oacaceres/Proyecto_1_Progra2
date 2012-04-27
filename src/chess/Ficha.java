@@ -25,6 +25,14 @@ public class Ficha {
         }
         
     }
+
+    public int getFilaGrid() {
+        return posicionGrid[0];
+    }
+    
+    public int getColGrid(){
+        return posicionGrid[1];
+    }
     
     public void setPosicionGrid(){
         posicionGrid[0] = fila;
@@ -34,6 +42,14 @@ public class Ficha {
     public void setPosicionTabla(int f, int c){
         posicionTabla[0] = f;
         posicionTabla[1] = c;
+    }
+    
+    public int getPosFilaTabla(){
+        return posicionTabla[0];
+    }
+    
+    public int getPosColTabla(){
+        return posicionTabla[1];
     }
     
     public void setEspaciosValidos(){
@@ -49,7 +65,9 @@ public class Ficha {
     }
     
     public boolean mover(int f, int c){
-        return grid[f][c];
+        int fila = this.getFilaGrid() - f;
+        int col = this.getColGrid() - c;
+        return grid[fila][col];
     }
 
     public void setColumna(int columna) {

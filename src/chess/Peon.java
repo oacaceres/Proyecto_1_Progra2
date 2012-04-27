@@ -31,7 +31,11 @@ public class Peon extends Ficha{
             grid[0][1] = false;
         }
         numMovimientos++;
-        return super.mover(f, c);
+        
+        int fil = this.getPosFilaTabla() - f;
+        int col = this.getPosColTabla() - c;
+        
+        return super.mover(fil, col);
         
     }
     

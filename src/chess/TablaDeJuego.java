@@ -72,10 +72,12 @@ public class TablaDeJuego {
     
     public boolean moverPeon(int fila, int columna, int filaDest, int colDest){
         if(tabla[fila][columna] != null){
-            Ficha peon = tabla[fila][columna];
-            tabla[fila][columna] = null;
-            tabla[filaDest][colDest] = peon;
-            return true;
+            if(tabla[fila][columna].mover(filaDest, colDest)){
+                Ficha peon = tabla[fila][columna];
+                tabla[fila][columna] = null;
+                tabla[filaDest][colDest] = peon;
+                return true;
+            }
         }
         return false;
         

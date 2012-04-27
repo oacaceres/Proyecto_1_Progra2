@@ -17,5 +17,11 @@ public class Chess {
         TablaDeJuego tj = new TablaDeJuego("Oski", "Nom");
         
         tj.juegoNuevo();
+        
+        if(tj.moverPeon(6, 0, 6, 1)){
+            System.out.println("Se Movio!");
+        }else{
+            System.out.println("Nope");
+        }
     }
 }
