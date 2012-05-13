@@ -18,7 +18,9 @@ public class Chess {
         
         tj.juegoNuevo();
         
-        if(tj.moverPeon(6, 0, 6, 1)){
+        boolean mover = tj.moverPeon(6, 0, 6, 1);
+        
+        if(mover){
             System.out.println("Se Movio!");
         }else{
             System.out.println("Nope");

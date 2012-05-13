@@ -9,8 +9,8 @@ package chess;
  * @author Oscar
  */
 public class Ficha {
-    protected int fila;
-    protected int columna;
+    protected int fila = 0;
+    protected int columna = 0;
     protected boolean grid[][];
     protected int posicionGrid[] = new int[2];
     protected int posicionTabla[] = new int[2];
@@ -25,7 +25,7 @@ public class Ficha {
         }
         
     }
-
+    
     public int getFilaGrid() {
         return posicionGrid[0];
     }
@@ -34,14 +34,16 @@ public class Ficha {
         return posicionGrid[1];
     }
     
-    public void setPosicionGrid(){
+    public void setPosicionGrid(int f, int c){
+        fila = f;
+        columna = c;
         posicionGrid[0] = fila;
         posicionGrid[1] = columna;
     }
     
     public void setPosicionTabla(int f, int c){
-        posicionTabla[0] = f;
-        posicionTabla[1] = c;
+        //posicionTabla[0] = f;
+        //posicionTabla[1] = c;
     }
     
     public int getPosFilaTabla(){
@@ -52,7 +54,7 @@ public class Ficha {
         return posicionTabla[1];
     }
     
-    public void setEspaciosValidos(){
+    protected void setEspaciosValidos(){
         
     }
     
@@ -65,21 +67,11 @@ public class Ficha {
     }
     
     public boolean mover(int f, int c){
-        int fila = this.getFilaGrid() - f;
-        int col = this.getColGrid() - c;
-        return grid[fila][col];
+        int fi = f + this.fila;
+        int co = c + this.columna;
+        return grid[fi][co];
     }
 
-    public void setColumna(int columna) {
-        this.columna = columna;
-    }
-
-    public void setFila(int fila) {
-        this.fila = fila;
-    }
-    
-    
-    
 }
 
 

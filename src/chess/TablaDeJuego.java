@@ -12,24 +12,11 @@ public class TablaDeJuego {
     private Ficha tabla[][] = new Ficha[8][8];
     private String jugadorUno;
     private String jugadorDos;
-    private int piezasBlancas;
-    private int piezasNegras;
-    private Ficha PN_0 = new Peon();
-    private Ficha PN_1 = new Peon();
-    private Ficha PN_2 = new Peon();
-    private Ficha PN_3 = new Peon();
-    private Ficha PN_4 = new Peon();
-    private Ficha PN_5 = new Peon();
-    private Ficha PN_6 = new Peon();
-    private Ficha PN_7 = new Peon();
-    private Ficha PB_0 = new Peon();
-    private Ficha PB_1 = new Peon();
-    private Ficha PB_2 = new Peon();
-    private Ficha PB_3 = new Peon();
-    private Ficha PB_4 = new Peon();
-    private Ficha PB_5 = new Peon();
-    private Ficha PB_6 = new Peon();
-    private Ficha PB_7 = new Peon();
+    private static int piezasBlancas;
+    private static int piezasNegras;
+    private Ficha PN[] = new Peon[8];
+    private Ficha PB[] = new Peon[8];
+    
     
     public TablaDeJuego(String uno, String dos){
         jugadorUno = uno;
@@ -40,45 +27,49 @@ public class TablaDeJuego {
         //total de piezas en la tabla
         piezasBlancas = 16;
         piezasNegras = 16;
-        
-        //Guardar posicion de peones Negros en tabla
-        tabla[1][0] = PN_0;
-        tabla[1][1] = PN_1;
-        tabla[1][2] = PN_2;
-        tabla[1][3] = PN_3;
-        tabla[1][4] = PN_4;
-        tabla[1][5] = PN_5;
-        tabla[1][6] = PN_6;
-        tabla[1][7] = PN_7;
-        for(int i = 0; i < tabla[1].length; i++){
-            tabla[1][i].setPosicionTabla(1, i);
+        tabla[6][0] = PB[0];
+        /*
+        //asigna a los peones sobre la tabla de juego
+        for(int f = 0; f < tabla[1].length; f++){
+            // tabla[1][f] = PN[f];
+            tabla[6][f] = PB[f];
         }
         
-        //Posicion de peones Blancos
-        tabla[6][0] = PB_0;
-        tabla[6][1] = PB_1;
-        tabla[6][2] = PB_2;
-        tabla[6][3] = PB_3;
-        tabla[6][4] = PB_4;
-        tabla[6][5] = PB_5;
-        tabla[6][6] = PB_6;
-        tabla[6][7] = PB_7;
-        for(int i = 0; i < tabla[6].length; i++){
-            tabla[6][i].setPosicionTabla(1, i);
-        }
+        
+        //Guardar posicion de peones en tabla
+        //for(int i = 0; i < tabla.length; i++){
+            //tabla[1][i].setPosicionTabla(1, i);
+        //}
+        
+        //for(int i = 0; i < tabla[6].length; i++){
+          //  tabla[6][i].setPosicionTabla(6, i);
+        //}
+        * 
+        */
         
         
     }
     
-    public boolean moverPeon(int fila, int columna, int filaDest, int colDest){
-        if(tabla[fila][columna] != null){
-            if(tabla[fila][columna].mover(filaDest, colDest)){
-                Ficha peon = tabla[fila][columna];
-                tabla[fila][columna] = null;
+    public boolean moverPeon(int f, int c, int filaDest, int colDest){
+        if(tabla[f][c] != null){
+            
+            int fil = filaDest - f;
+            int col = colDest - c;
+            
+            if(tabla[f][c].mover(fil, col)){
+                Ficha peon = tabla[f][c];
+                
+                tabla[f][c] = null;
                 tabla[filaDest][colDest] = peon;
+                
+                
+                System.out.println("test: " + f + " " + c);
                 return true;
             }
+        
+            System.out.println("Aqui es donde falla" + f + " " + c);
         }
+        
         return false;
         
     }

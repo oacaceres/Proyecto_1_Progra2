@@ -13,29 +13,26 @@ public class Peon extends Ficha{
     
     public Peon(){
         super(3,3);
-        this.setColumna(1);
-        this.setFila(2);
-        this.setPosicionGrid();
+        
+        this.setPosicionGrid(2,1);
         this.setEspaciosValidos();
     }
-
+    
+    // esto asignara los espacios donde es valido moverse
+    // comparandolo con el grid. 
     @Override
-    public void setEspaciosValidos() {
+    protected void setEspaciosValidos() {
         grid[0][1] = true;
         grid[1][1] = true;
     }
-
+    
     @Override
     public boolean mover(int f, int c) {
-        if(numMovimientos >=1){
+        if(numMovimientos > 1){
             grid[0][1] = false;
         }
         numMovimientos++;
-        
-        int fil = this.getPosFilaTabla() - f;
-        int col = this.getPosColTabla() - c;
-        
-        return super.mover(fil, col);
+        return super.mover(f, c);
         
     }
     
